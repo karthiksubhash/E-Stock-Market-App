@@ -1,0 +1,8 @@
+CREATE TABLE `companydb`.`companyinfo` (
+  `code` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `eco` VARCHAR(45) NULL,
+  `turnover` VARCHAR(45) NULL,
+  `website` VARCHAR(45) NULL,
+  `stockexchangeenlisted` VARCHAR(45) NULL,
+  PRIMARY KEY (`code`));
