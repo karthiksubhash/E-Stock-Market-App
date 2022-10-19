@@ -14,7 +14,7 @@ public class ApiGatewayConfiguration {
 		return builder.routes()
 		.route( p-> p.path("/company/**").uri("lb://company-info-service"))
 		.route(p-> p.path("/stock/**").uri("lb://stock-info-services"))
-		.route(p-> p.path("/market/**").uri("lb://e-stock-market-app"))
+		.route(p-> p.path("/market/**").uri("lb://estock-market-info-reader")) 
 		.build();
 	}
 }

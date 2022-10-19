@@ -25,7 +25,6 @@ public class StockinfoServiceAPI {
 		return temp;
 	}
 	
-	
 	@PostMapping("/stock/add")
 	public StockDetailsModelDTO addStockDetails(@RequestBody StockDetailsModelDTO stockDetailsModelDTO ) {
 		return stockinfoService.addStockDetails(stockDetailsModelDTO);

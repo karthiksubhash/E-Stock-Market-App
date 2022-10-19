@@ -56,13 +56,13 @@ public class StockinfoService {
 		LocalDateTime now = LocalDateTime.now(); 
 
 		stockDetailsModelDTO.setDateTime(dtf.format(now));
+		stockDetailsModelDTO.setIsDeleted(false);
 
 		try {
 			StockDetailsMapper.mapperToModel(stockDetailsModel, stockDetailsModelDTO);
 		} catch (Exception e) {
 			LOGGER.error(e.toString());
 		}
-		stockDetailsModel.setIsDeleted(false);
 		stockDetailsRepository.save(stockDetailsModel);
 		LOGGER.info("saved stock details in SQL DB");
 
