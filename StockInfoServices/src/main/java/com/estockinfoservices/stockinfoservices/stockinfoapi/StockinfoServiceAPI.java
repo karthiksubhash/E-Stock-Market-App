@@ -1,5 +1,7 @@
 package com.estockinfoservices.stockinfoservices.stockinfoapi;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +28,7 @@ public class StockinfoServiceAPI {
 	}
 	
 	@PostMapping("/stock/add")
-	public StockDetailsModelDTO addStockDetails(@RequestBody StockDetailsModelDTO stockDetailsModelDTO ) {
+	public StockDetailsModelDTO addStockDetails(@Valid @RequestBody StockDetailsModelDTO stockDetailsModelDTO ) {
 		return stockinfoService.addStockDetails(stockDetailsModelDTO);
 	}
 	

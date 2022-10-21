@@ -2,6 +2,8 @@ package com.estockcompanyinfoservice.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.stereotype.Component;
 
 
@@ -13,10 +15,15 @@ public class CompanyInfoModelDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long code;
+	@NotBlank(message = "Company Name is mandatory to fill !!")
 	private String name;
+	@NotBlank(message = "Company CEO Name is mandatory to fill !!")
 	private String ceo;
+	@NotBlank(message = "Company turnover Name is mandatory to fill !!")
 	private String turnover;
+	@NotBlank(message = "Company website Name is mandatory to fill !!")
 	private String website;
+	@NotBlank(message = "Company stock Exchange Enlisted Name is mandatory to fill !!")
 	private String stockexchangeenlisted;
 	private String dateTime;
 

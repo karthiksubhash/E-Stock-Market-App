@@ -1,5 +1,7 @@
 package com.estockcompanyinfoservice.api;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class CompanyInfoAPI {
 	}
 
 	@PostMapping("/company/register")
-	public ResponseEntity<CompanyInfoModelDTO> saveCompany(@RequestBody CompanyInfoModelDTO companyInfo) {
+	public ResponseEntity<CompanyInfoModelDTO> saveCompany(@Valid @RequestBody CompanyInfoModelDTO companyInfo) {
 		ResponseEntity<CompanyInfoModelDTO> responseEntity = null;
 		try {
 			CompanyInfoModelDTO companyInfoDTO = companyInfoService.save(companyInfo);

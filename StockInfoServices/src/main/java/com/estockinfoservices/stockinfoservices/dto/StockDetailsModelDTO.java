@@ -1,5 +1,7 @@
 package com.estockinfoservices.stockinfoservices.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -7,10 +9,15 @@ public class StockDetailsModelDTO {
 
 	
 	private Long scode;
+	
+	@NotBlank(message = "companyCode is mandatory to fill !!")
 	private Long companyCode;
+	@NotBlank(message = "stockPrice is mandatory to fill !!")
 	private String stockPrice;
+	
 	private String dateTime;
-	private Boolean isDeleted;
+	private Boolean isDeleted; 
+	
 	public Long getScode() {
 		return scode;
 	}
