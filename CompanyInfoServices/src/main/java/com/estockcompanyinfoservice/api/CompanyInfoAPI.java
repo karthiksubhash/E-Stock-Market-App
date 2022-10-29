@@ -26,11 +26,6 @@ public class CompanyInfoAPI {
 	
 	private static final Logger LOGGER=LoggerFactory.getLogger(CompanyInfoAPI.class);
 
-	@GetMapping("/demoCompInfo")
-	public CompanyInfoModel getCompanyinfo() {
-		return companyInfoService.demoCompanyinfo();
-	}
-
 	@PostMapping("/company/register")
 	public ResponseEntity<CompanyInfoModelDTO> saveCompany(@Valid @RequestBody CompanyInfoModelDTO companyInfo) {
 		ResponseEntity<CompanyInfoModelDTO> responseEntity = null;
@@ -48,15 +43,23 @@ public class CompanyInfoAPI {
 		}
 		return responseEntity;
 	}
-
-	@GetMapping("/company/info/{companycode}")
-	public CompanyInfoModelDTO getCompanyinfo(@PathVariable Long companycode) { 
-		return companyInfoService.getCompanyInfo(companycode);
-	}
-
+	
 	@DeleteMapping("/company/delete/{companycode}")
-	public void deleteCompany(@PathVariable Long companycode) {
-		companyInfoService.delete(companycode);
+	public ResponseEntity<Long> deleteCompany(@PathVariable Long companycode) {
+		if(companyInfoService.delete(companycode)) {
+			return new ResponseEntity<>(companycode, HttpStatus.OK);	
+		}
+		 return new ResponseEntity<>(HttpStatus.NOT_FOUND);	
 	}
+
+//	@GetMapping("/company/info/{companycode}")
+//	public CompanyInfoModelDTO getCompanyinfo(@PathVariable Long companycode) { 
+//		return companyInfoService.getCompanyInfo(companycode);
+//	}
+
+//	@GetMapping("/demoCompInfo")
+//	public CompanyInfoModel getCompanyinfo() {
+//		return companyInfoService.demoCompanyinfo();
+//	}
 
 }

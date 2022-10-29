@@ -20,4 +20,9 @@ public class CompanyStockInfoAPI {
 		return companyStockInfoService.findInfoById(id);
 	}
 
+	
+	@GetMapping("info/{id}/{startDate}/{endDate}")
+	public EstockInfoModelDTO findStocksWithInDate(@PathVariable Long id, @PathVariable String startDate, @PathVariable String endDate) {
+		return companyStockInfoService.findStocksWithInDate(id, startDate, endDate);
+	}
 }
