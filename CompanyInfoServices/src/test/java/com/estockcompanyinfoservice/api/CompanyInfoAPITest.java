@@ -25,13 +25,13 @@ import com.estockcompanyinfoservice.services.CompanyInfoService;
 @WebMvcTest(value= CompanyInfoAPI.class)
 @WithMockUser
 public class CompanyInfoAPITest {
-	
+
 	@Autowired
 	private MockMvc mockMvc;
-	
+
 	@MockBean
 	private CompanyInfoService companyInfoService; 
-	
+
 	private String stubCompanyInfo="{\r\n"
 			+ "    \"code\": 7,\r\n"
 			+ "    \"name\": \"ITC\",\r\n"
@@ -41,46 +41,44 @@ public class CompanyInfoAPITest {
 			+ "    \"stockexchangeenlisted\": \"BSE\",\r\n"
 			+ "    \"dateTime\": \"2022-10-08T16:25:37.862431\"\r\n"
 			+ "}";
-	
-	
+
+
 	@Test
 	public void saveCompanyTest() throws Exception {
-	
-		Long id= (long) 12;
-		
-		CompanyInfoModelDTO companyInfoModelDTO =  new CompanyInfoModelDTO(id,"ITC","Yogesh","1000000","https://www.itcportal.com/","BSE","2022-10-19T22:41");
-	
+
+		CompanyInfoModelDTO companyInfoModelDTO =  new CompanyInfoModelDTO(7L,"ITC","Yogesh","1000000","https://www.itcportal.com/","BSE","2022-10-19T22:41");
+
 		Mockito.when(companyInfoService.save(Mockito.any(CompanyInfoModelDTO.class))).thenReturn(companyInfoModelDTO);
-		
+
 		RequestBuilder requestBuilder= MockMvcRequestBuilders
 				.post("/company/register")
 				.accept(MediaType.APPLICATION_JSON)
 				.content(stubCompanyInfo)
 				.contentType(MediaType.APPLICATION_JSON);
-		
+
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-		
+
 		MockHttpServletResponse response = result.getResponse();
-		
+
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
-		
+
 	}
-	
+
 	@Test
 	public void deleteCompanyTest() throws Exception {
-		
+
 		String path="/company/delete/7";
-		
+
 		Mockito.when(companyInfoService.delete(Mockito.anyLong())).thenReturn(true);
-		
+
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
 				.delete(path)
 				.accept(MediaType.APPLICATION_JSON);
-		
+
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-		
+
 		MockHttpServletResponse response = result.getResponse();
-		
+
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
 	}
 

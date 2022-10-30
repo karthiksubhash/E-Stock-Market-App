@@ -10,27 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CompanyInfoModelDTO implements Serializable {
 
-	public CompanyInfoModelDTO(Long code, @NotBlank(message = "Company Name is mandatory to fill !!") String name,
-			@NotBlank(message = "Company CEO Name is mandatory to fill !!") String ceo,
-			@NotBlank(message = "Company turnover Name is mandatory to fill !!") String turnover,
-			@NotBlank(message = "Company website Name is mandatory to fill !!") String website,
-			@NotBlank(message = "Company stock Exchange Enlisted Name is mandatory to fill !!") String stockexchangeenlisted,
-			String dateTime) {
+	private static final long serialVersionUID = 1L;
+	
+	private Long code;
+	
+	public CompanyInfoModelDTO() {
 		super();
-		this.code = code;
-		this.name = name;
-		this.ceo = ceo;
-		this.turnover = turnover;
-		this.website = website;
-		this.stockexchangeenlisted = stockexchangeenlisted;
-		
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Long code;
 	@NotBlank(message = "Company Name is mandatory to fill !!")
 	private String name;
 	@NotBlank(message = "Company CEO Name is mandatory to fill !!")
@@ -94,6 +81,26 @@ public class CompanyInfoModelDTO implements Serializable {
 				+ ", website=" + website + ", stockexchangeenlisted=" + stockexchangeenlisted + ", dateTime=" + dateTime
 				+ "]";
 	}
+
+	public CompanyInfoModelDTO(Long code, @NotBlank(message = "Company Name is mandatory to fill !!") String name,
+			@NotBlank(message = "Company CEO Name is mandatory to fill !!") String ceo,
+			@NotBlank(message = "Company turnover Name is mandatory to fill !!") String turnover,
+			@NotBlank(message = "Company website Name is mandatory to fill !!") String website,
+			@NotBlank(message = "Company stock Exchange Enlisted Name is mandatory to fill !!") String stockexchangeenlisted,
+			String dateTime) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.ceo = ceo;
+		this.turnover = turnover;
+		this.website = website;
+		this.stockexchangeenlisted = stockexchangeenlisted;
+		
+	}
+
+	/**
+	 * 
+	 */
 
 	
 }
