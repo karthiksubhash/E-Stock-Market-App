@@ -10,7 +10,7 @@ public class StockDetailsModelDTO {
 	
 	private Long scode;
 	
-	@NotBlank(message = "companyCode is mandatory to fill !!")
+//	@NotBlank(message = "companyCode is mandatory to fill !!")
 	private Long companyCode;
 	@NotBlank(message = "stockPrice is mandatory to fill !!")
 	private String stockPrice;
