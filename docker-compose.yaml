@@ -1,0 +1,86 @@
+version: '3.7'
+
+services:
+  estockmarketapp-api-company-info-service:
+    image: karthiks7678/estockmarketappv1-company-info-services:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8180:8180"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULT-ZONE: http://estockmarketapp-naming-server:8761/eureka
+
+  estockmarketapp-api-estock-market-info-reader:
+    image: karthiks7678/estockmarketappv1-estock-market-info-reader:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8382:8382"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULT-ZONE: http://estockmarketapp-naming-server:8761/eureka
+
+  estockmarketapp-api-message-queue-services:
+    image: karthiks7678/estockmarketappv1-message-queue-services:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8380:8380"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULT-ZONE: http://estockmarketapp-naming-server:8761/eureka
+
+  estockmarketapp-api-stock-info-services:
+    image: karthiks7678/estockmarketappv1-stock-info-services:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8280:8280"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULT-ZONE: http://estockmarketapp-naming-server:8761/eureka
+
+  estockmarketapp-api-gateway:
+    image: karthiks7678/estockmarketappv1-api-gateway:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8765:8765"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULT-ZONE: http://estockmarketapp-naming-server:8761/eureka
+
+  estockmarketapp-api-security:
+    image: karthiks7678/estockmarketappv1-security-service:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8100:8100"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULT-ZONE: http://estockmarketapp-naming-server:8761/eureka
+
+  estockmarketapp-naming-server:
+    image: karthiks7678/estockmarketappv1-netflix-eureka-naming-server:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8761:8761"
+    networks:
+     - estockmarketapp-network
+
+networks:
+  estockmarketapp-network:
+  

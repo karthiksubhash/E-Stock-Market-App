@@ -8,11 +8,12 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.eStockCompanyInfoServices</groupId>
-	<artifactId>CompanyInfoServices</artifactId>
+	<groupId>com.EStockMarketApp</groupId>
+	<artifactId>company-info-services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CompanyInfoServices</name>
+	<name>company-info-services</name>
 	<description>API to manage company details </description>
+			
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -104,12 +105,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					<image>
+						<name>karthiks7678/estockmarketappv1-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
 			</plugin>
 		</plugins>

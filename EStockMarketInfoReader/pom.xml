@@ -9,10 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.EStockMarketApp</groupId>
-	<artifactId>EStockMarketInfoReader</artifactId>
+	<artifactId>estock-market-info-reader</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EStockMarketInfoReader</name>
+	<name>estock-market-info-reader</name>
 	<description>Demo project for Spring Boot</description>
+	
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.4</spring-cloud.version>
@@ -76,6 +77,10 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<image>
+						<name>karthiks7678/estockmarketappv1-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
 			</plugin>
 		</plugins>

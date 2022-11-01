@@ -8,11 +8,11 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.eStockInfoServices</groupId>
-	<artifactId>StockInfoServices</artifactId>
+	<groupId>com.EStockMarketApp</groupId>
+	<artifactId>stock-info-services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>StockInfoServices</name>
-	<description>API to manage sctok details </description>
+	<name>stock-info-services</name>
+	<description>API to manage sctok details </description>	
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -85,6 +85,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<image>
+						<name>karthiks7678/estockmarketappv1-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
