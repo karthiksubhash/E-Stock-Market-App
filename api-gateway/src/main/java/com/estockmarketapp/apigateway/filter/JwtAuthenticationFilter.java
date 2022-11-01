@@ -43,7 +43,8 @@ public class JwtAuthenticationFilter implements GatewayFilter {
 				response.setStatusCode(HttpStatus.UNAUTHORIZED);
 				return response.setComplete();
 			}
-			final String token = request.getHeaders().getOrEmpty("Authorization").get(0);
+			final String token = request.getHeaders().getOrEmpty("Authorization").get(0).substring(7);
+
 			try {
 				jwtUtil.validateToken(token);
 			}catch (JwtTokenMalformedException |JwtTokenMissingException ex) {

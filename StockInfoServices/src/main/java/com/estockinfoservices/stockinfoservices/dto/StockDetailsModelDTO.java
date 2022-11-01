@@ -10,8 +10,8 @@ public class StockDetailsModelDTO {
 	
 	private Long scode;
 	
-//	@NotBlank(message = "companyCode is mandatory to fill !!")
-	private Long companyCode;
+	@NotBlank(message = "companyCode is mandatory to fill !!")
+	private String companyCode;
 	@NotBlank(message = "stockPrice is mandatory to fill !!")
 	private String stockPrice;
 	
@@ -24,10 +24,10 @@ public class StockDetailsModelDTO {
 	public void setScode(Long scode) {
 		this.scode = scode;
 	}
-	public Long getCompanyCode() {
+	public String getCompanyCode() {
 		return companyCode;
 	}
-	public void setCompanyCode(Long companyCode) {
+	public void setCompanyCode(String companyCode) {
 		this.companyCode = companyCode;
 	}
 	public String getStockPrice() {
@@ -48,7 +48,7 @@ public class StockDetailsModelDTO {
 	public void setIsDeleted(Boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
-	public StockDetailsModelDTO(Long scode, Long companyCode, String stockPrice, String dateTime,
+	public StockDetailsModelDTO(Long scode, String companyCode, String stockPrice, String dateTime,
 			Boolean isDeleted) {
 		super();
 		this.scode = scode;

@@ -11,7 +11,7 @@ public interface StockDetailsMapper {
 	
 
 	 public static void mapperToDTO(StockDetailsModel stockDetailsModel, StockDetailsModelDTO stockDetailsModelDTO) {
-		 stockDetailsModelDTO.setCompanyCode(stockDetailsModel.getCompanyCode());
+		 stockDetailsModelDTO.setCompanyCode(String.valueOf(stockDetailsModel.getCompanyCode()));
 		 stockDetailsModelDTO.setDateTime(stockDetailsModel.getDateTime().toString());
 		 stockDetailsModelDTO.setIsDeleted(stockDetailsModel.getIsDeleted());
 		 stockDetailsModelDTO.setScode(stockDetailsModel.getScode());
@@ -20,7 +20,7 @@ public interface StockDetailsMapper {
 	
 
 	 public static void mapperToModel(StockDetailsModel stockDetailsModel, StockDetailsModelDTO stockDetailsModelDTO) throws Exception{
-		 stockDetailsModel.setCompanyCode(stockDetailsModelDTO.getCompanyCode());
+		 stockDetailsModel.setCompanyCode(Long.parseLong(stockDetailsModelDTO.getCompanyCode()));
 		 stockDetailsModel.setIsDeleted(stockDetailsModelDTO.getIsDeleted());
 		 stockDetailsModel.setScode(stockDetailsModelDTO.getScode());
 		 stockDetailsModel.setStockPrice(stockDetailsModelDTO.getStockPrice());

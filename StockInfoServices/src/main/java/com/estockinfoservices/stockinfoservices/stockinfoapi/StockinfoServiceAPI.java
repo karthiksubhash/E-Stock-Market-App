@@ -22,7 +22,7 @@ public class StockinfoServiceAPI {
 	public StockDetailsModelDTO getstockInfo() {
 		StockDetailsModelDTO temp= new StockDetailsModelDTO();
 		temp.setScode((long)1);
-		temp.setCompanyCode((long) 1);
+		temp.setCompanyCode("44");
 		temp.setStockPrice("130");
 		return temp;
 	}

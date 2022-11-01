@@ -18,7 +18,7 @@ import com.estockmarketapp.apigateway.exception.JwtTokenMissingException;
 @Service
 public class JwtUtil {
 
-	private String secret = "javatechie";
+	private String secret = "apisecretcode";
 
 	private static final Logger LOGGER=LoggerFactory.getLogger(JwtUtil.class);
 	
@@ -47,5 +47,4 @@ public class JwtUtil {
 		}
 		return null;
 	}
-
 }
