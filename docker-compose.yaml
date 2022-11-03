@@ -13,6 +13,18 @@ services:
     environment:
       eureka.client.serviceurl.defaultZone: http://estockmarketapp-naming-server:8761/eureka
 
+  estockmarketapp-api-estock-market-info-reader:
+    image: karthiks7678/estockmarketappv1-estock-market-info-reader:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8382:8382"
+    networks:
+    - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      eureka.client.serviceurl.defaultZone: http://estockmarketapp-naming-server:8761/eureka
+
   estockmarketapp-naming-server:
     image: karthiks7678/estockmarketappv1-netflix-eureka-naming-server:0.0.1-SNAPSHOT
     mem_limit: 700m
