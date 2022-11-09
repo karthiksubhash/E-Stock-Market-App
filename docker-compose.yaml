@@ -2,12 +2,13 @@ version: '3.7'
 
 services:
   estockmarketapp-api-gateway:
-    image: karthiks7678/estockmarketappv1-api-gateway:0.0.1-SNAPSHOT
+    image: karthiks7678/estockmarketappv1-api-gateway:0.0.2-SNAPSHOT
     mem_limit: 700m
     ports:
      - "8765:8765"
+    restart: always
     networks:
-    - estockmarketapp-network
+     - estockmarketapp-network
     depends_on:
      - estockmarketapp-naming-server
     environment:
@@ -18,8 +19,9 @@ services:
     mem_limit: 700m
     ports:
      - "8382:8382"
+    restart: always  
     networks:
-    - estockmarketapp-network
+     - estockmarketapp-network
     depends_on:
      - estockmarketapp-naming-server
     environment:
@@ -30,8 +32,23 @@ services:
     mem_limit: 700m
     ports:
      - "8761:8761"
+    restart: always
     networks:
      - estockmarketapp-network
+
+  estockmarketapp-api-security:
+    image: karthiks7678/estockmarketappv1-security-service:0.0.2-SNAPSHOT
+    mem_limit: 700m
+    ports:
+     - "8100:8100"
+    restart: always
+    networks:
+     - estockmarketapp-network
+    depends_on:
+     - estockmarketapp-naming-server
+    environment:
+      eureka.client.serviceurl.defaultZone: http://estockmarketapp-naming-server:8761/eureka
+
 
 networks:
   estockmarketapp-network:
